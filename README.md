@@ -1,8 +1,5 @@
-# React + Vite
+Rick and morty
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+You can find your favorite character and add it to your favorite list! just try :)
+ 
+![preview project](https://www.uplooder.net/img/image/15/51ccaa69a7a607e9e98cd6c121d4ca8d/Screenshot-(1).png)
