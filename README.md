@@ -2,4 +2,4 @@ Rick and morty
 
 You can find your favorite character and add it to your favorite list! just try :)
  
-![preview project](https://www.uplooder.net/img/image/15/51ccaa69a7a607e9e98cd6c121d4ca8d/Screenshot-(1).png)
+![preview project](https://www.uplooder.net/img/image/27/46c4726c0f8b2fe5ece25f1f905d4354/rick-(2).png)
