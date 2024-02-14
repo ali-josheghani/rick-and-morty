@@ -8,46 +8,20 @@ import Navbar, {
 } from "./components/Navbar";
 import CharcterList from "./components/CharcterList";
 import CharacterDetail from "./components/CharacterDetail";
-import toast, { Toaster } from "react-hot-toast";
-import axios from "axios";
+import { Toaster } from "react-hot-toast";
 import Modal from "./components/Modal";
+import useCharacters from "./hooks/useCharacters";
 
 const App = () => {
-  const [characters, setCharacters] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
   const [query, setQuery] = useState("");
+  const {isLoading, characters } = useCharacters('https://rickandmortyapi.com/api/character/?name',query);
   const [selectId, setSelectId] = useState(null);
-  const [favourites, setFavourites] = useState( JSON.parse(localStorage.getItem("FAVOURITE")) || []);
+  const [favourites, setFavourites] = useState(
+    JSON.parse(localStorage.getItem("FAVOURITE")) || []
+  );
   useEffect(() => {
-    const controller = new AbortController();
-    const signal = controller.signal;
-    async function fetchData() {
-      try {
-        setIsLoading(true);
-        const { data } = await axios.get(
-          `https://rickandmortyapi.com/api/character/?name=${query}`,
-          { signal }
-        );
-        setCharacters(data.results.slice(0, 4));
-      } catch ({ response }) {
-        setCharacters([]);
-        toast.error(response.data.error);
-      } finally {
-        setIsLoading(false);
-      }
-    }
-    // if (query.length < 3) {
-    //   setCharacters([]);
-    //   return;
-    // }
-    fetchData();
-    return () => {
-      controller.abort();
-    };
-  }, [query]);
-  useEffect(()=>{
-    localStorage.setItem("FAVOURITE",JSON.stringify(favourites))
-  },[favourites])
+    localStorage.setItem("FAVOURITE", JSON.stringify(favourites));
+  }, [favourites]);
   // useEffect(() => {
   //     async function fetchData() {
   //       try {
@@ -84,7 +58,10 @@ const App = () => {
       <Navbar>
         <Search query={query} setQuery={setQuery} />
         <FindCharacters numOfCharacters={characters.length} />
-        <Favourites favourites={favourites} onDeleteFavourite={deleteFavouriteHandler} />
+        <Favourites
+          favourites={favourites}
+          onDeleteFavourite={deleteFavouriteHandler}
+        />
       </Navbar>
       <div className="main">
         <CharcterList
