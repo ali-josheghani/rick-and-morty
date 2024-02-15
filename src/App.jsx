@@ -11,17 +11,19 @@ import CharacterDetail from "./components/CharacterDetail";
 import { Toaster } from "react-hot-toast";
 import Modal from "./components/Modal";
 import useCharacters from "./hooks/useCharacters";
+import useLocalStorag from "./hooks/useLocalStorag";
 
 const App = () => {
   const [query, setQuery] = useState("");
   const {isLoading, characters } = useCharacters('https://rickandmortyapi.com/api/character/?name',query);
   const [selectId, setSelectId] = useState(null);
-  const [favourites, setFavourites] = useState(
-    JSON.parse(localStorage.getItem("FAVOURITE")) || []
-  );
-  useEffect(() => {
-    localStorage.setItem("FAVOURITE", JSON.stringify(favourites));
-  }, [favourites]);
+  const [favourites, setFavourites] = useLocalStorag("FAVOURITE",[])
+  // const [favourites, setFavourites] = useState(
+  //   JSON.parse(localStorage.getItem("FAVOURITE")) || []
+  // );
+  // useEffect(() => {
+  //   localStorage.setItem("FAVOURITE", JSON.stringify(favourites));
+  // }, [favourites]);
   // useEffect(() => {
   //     async function fetchData() {
   //       try {
