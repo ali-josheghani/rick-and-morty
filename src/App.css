@@ -225,3 +225,7 @@
     flex-direction: row;
   }
 }
+
+.class-pro{
+  display: block;
+}
